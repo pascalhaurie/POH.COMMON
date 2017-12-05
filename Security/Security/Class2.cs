@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Security
 {
-    public class Class1
+    class Class2
     {
+
         public void f()
         {
-            var f = 1;
-        }
 
+        }
     }
 }
