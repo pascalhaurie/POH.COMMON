@@ -56,18 +56,27 @@
 							table.ajax.reload();
 						}
 					}
-				]
+                ],
+                "initComplete": function () {
+                    $(document).on("click", "tr[role='row']", function () {
+                        alert($(this).children('td:first-child').text());
+                        var table = $('#example').DataTable();
+                        var count = table.rows({ selected: true }).count();
+                        alert('table = ' + table + ' count = ' + count);
+                    });
+                }
 			});
 
-			$('#example').DataTable()
-				.on('select', function (e, dt, type, indexes) {
-					var rowData = table.rows(indexes).data().toArray();
-					events.prepend('<div><b>' + type + ' selection</b> - ' + JSON.stringify(rowData) + '</div>');
-				})
-				.on('deselect', function (e, dt, type, indexes) {
-					var rowData = table.rows(indexes).data().toArray();
-					events.prepend('<div><b>' + type + ' <i>de</i>selection</b> - ' + JSON.stringify(rowData) + '</div>');
-				});
+			//$('#example').DataTable()
+			//	.on('select', function (e, dt, type, indexes) {
+			//		var rowData = table.rows(indexes).data().toArray();
+			//		events.prepend('<div><b>' + type + ' selection</b> - ' + JSON.stringify(rowData) + '</div>');
+			//	})
+			//	.on('deselect', function (e, dt, type, indexes) {
+			//		var rowData = table.rows(indexes).data().toArray();
+			//		events.prepend('<div><b>' + type + ' <i>de</i>selection</b> - ' + JSON.stringify(rowData) + '</div>');
+   //             });
+
 		});
 
 	</script>
